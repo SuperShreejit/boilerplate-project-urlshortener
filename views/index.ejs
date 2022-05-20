@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>URL Shortener Microservice | freeCodeCamp.org</title>
+    <link
+      rel="icon"
+      type="image/png"
+      href="https://cdn.freecodecamp.org/universal/favicons/favicon-16x16.png"
+    />
+    <link href="/public/style.css" rel="stylesheet" type="text/css" />
+    <script src='/public/script.js' defer></script>
+  </head>
+
+  <body>
+    <h1>URL Shortener Microservice</h1>
+    <main>
+      <section>
+        <h2>Create new short URLs</h2>
+        <form action="api/shorturl" method="POST">
+          <fieldset>
+            <legend>URL Shortener</legend>
+            <label for="url_input">URL:</label>
+            <input id="url_input" type="text" name="url" placeholder="https://www.freecodecamp.org/" />
+            <input type="submit" value="POST URL" />
+          </fieldset>
+        </form>
+      </section>
+      <section>
+        <h2>Short URLs</h2>
+        <ul class='list'>
+          <li>
+            <span><strong>Site Name:</strong></span>
+            <span><strong>Short URL:</strong></span>
+          </li>
+          <% shortUrls.forEach(url =>{ %>
+            <li>
+              <span><%= url.name %></span>
+              <a href='<%= url.fullUrl %>'><%= url.short %></a>
+              <button id='delete' data-urlId='<%= url.id %>'>delete</button>
+            </li>
+            <% }) %>
+        </ul>
+      </section>
+    </main>
+  </body>
+</html>
